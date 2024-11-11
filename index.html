@@ -1180,6 +1180,160 @@ option = {
 </script>
           
 
+<style>
+  .description2 p {
+    text-align: left; /* 左对齐 */
+    text-indent: 2em; /* 首行缩进 */
+    margin-bottom: 1em; /* 添加段落间距 */
+  }
+</style>
+
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Data Construction Pipline</h2>
+        <div class="image-container">
+            <img src="static/images/data_construct.jpg" alt="An overview of the data construction, filtering, verification, and quality control processes of Chinese SimpleQA." style="max-width: 100%; height: auto;">
+        </div>
+        <div class="description2", style="margin-top: 30px;">
+          <p>The data construction process for Chinese SimpleQA includes both an automated process and a manual verification process. The automated part involves knowledge content extraction and filtering, automatic generation of question-answer pairs, LLM automatic validation based on criteria, answer factual correctness verification based on RAG (Retrieval-Augmented Generation), and question difficulty filtering.</p>
+          <p>Initially, we collected a large amount of knowledge-rich text content from various knowledge fields, primarily derived from Wikipedia. This content was then processed through a quality assessment model to filter out low-quality data. Based on this, we guided the LLM to generate question-answer pairs according to predefined criteria using these high-quality knowledge contents. To ensure that the generated question-answer pairs met these criteria, we utilized the LLM again for rule-based validation to remove non-conforming data. In this way, we obtained a large set of initially filtered knowledge question-answer pairs. However, relying on a single data source for generation can potentially lead to inaccurate answers. To mitigate this risk, we deployed external retrieval tools to gather more diverse information, guiding the LLM in evaluating the factual correctness of answers based on information from different sources. In this process, incorrect question-answer pairs were discarded. Specifically, we used LlamaIndex as the retrieval method, with search results from Google and Bing as data sources, further enhancing the quality of the dataset.</p>
+          <p>In addition, we filtered the dataset for difficulty to better probe the knowledge boundaries of the LLMs, removing overly simple questions. Specifically, if a question could be correctly answered by all four powerful models, Meta-Llama-3-70B-Instruct, Qwen2.5-72B-Instruct, and GLM-4-Plus, it was deemed too simple and thus discarded. Through this approach, Chinese SimpleQA becomes more challenging.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  table {
+      width: 100%;
+      border-collapse: collapse;
+  }
+  th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+  }
+  th {
+      background-color: #f2f2f2; /* Light color for headers */
+  }
+  .merged-row {
+      background-color: #e0e0e0; /* Light color for merged row */
+  }
+</style>
+
+
+
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">LeaderBoard</h2>
+        
+        <table>
+          <thead>
+            <tr>
+              <th>Models</th>
+              <th>CO</th>
+              <th>NA</th>
+              <th>IN</th>
+              <th>CGA</th>
+              <th>F-score</th>
+              <th>CC</th>
+              <th>HU</th>
+              <th>ETAS</th>
+              <th>LAC</th>
+              <th>SO</th>
+              <th>NS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>o1-preview</td><td>63.8</td><td>8.1</td><td>24.0</td><td>72.7</td><td>67.9</td><td>45.7</td><td>69.8</td><td>72.4</td><td>65.0</td><td>73.5</td><td>72.3</td></tr>
+            <tr><td>Doubao-pro-32k</td><td>61.9</td><td>5.8</td><td>27.8</td><td>69.1</td><td>65.3</td><td>61.8</td><td>69.3</td><td>69.0</td><td>56.1</td><td>64.2</td><td>70.4</td></tr>
+            <tr><td>GLM-4-Plus</td><td>58.7</td><td>2.8</td><td>33.9</td><td>63.4</td><td>60.9</td><td>56.5</td><td>64.1</td><td>64.9</td><td>50.7</td><td>66.6</td><td>62.8</td></tr>
+            <tr><td>GPT-4o</td><td>59.3</td><td>1.3</td><td>39.3</td><td>60.1</td><td>59.7</td><td>39.4</td><td>64.0</td><td>65.1</td><td>53.3</td><td>68.6</td><td>62.0</td></tr>
+            <tr><td>Qwen-Max</td><td>54.1</td><td>5.8</td><td>34.6</td><td>61.0</td><td>57.4</td><td>47.8</td><td>59.9</td><td>63.5</td><td>49.9</td><td>61.2</td><td>59.3</td></tr>
+            <tr><td>Gemini-1.5-pro</td><td>54.4</td><td>2.9</td><td>37.6</td><td>59.1</td><td>56.7</td><td>41.4</td><td>59.1</td><td>60.8</td><td>52.2</td><td>56.3</td><td>64.3</td></tr>
+            <tr><td>DeepSeek-V2.5</td><td>54.1</td><td>1.8</td><td>40.0</td><td>57.5</td><td>55.7</td><td>50.4</td><td>57.6</td><td>58.8</td><td>50.1</td><td>59.4</td><td>56.9</td></tr>
+            <tr><td>Claude-3.5-Sonnet</td><td>46.2</td><td>23.3</td><td>26.4</td><td>63.6</td><td>53.5</td><td>28.7</td><td>61.3</td><td>60.4</td><td>42.2</td><td>59.8</td><td>57.7</td></tr>
+            <tr><td>Yi-Large</td><td>47.3</td><td>12.2</td><td>36.3</td><td>56.6</td><td>51.5</td><td>41.1</td><td>56.5</td><td>55.1</td><td>41.7</td><td>57.6</td><td>53.8</td></tr>
+            <tr><td>moonshot-v1-8k</td><td>48.7</td><td>1.0</td><td>45.9</td><td>51.5</td><td>50.1</td><td>49.8</td><td>54.1</td><td>56.8</td><td>41.4</td><td>53.0</td><td>46.6</td></tr>
+            <tr><td>GPT-4-turbo</td><td>45.6</td><td>14.3</td><td>40.2</td><td>53.1</td><td>49.1</td><td>24.2</td><td>55.2</td><td>58.9</td><td>43.9</td><td>52.5</td><td>50.8</td></tr>
+            <tr><td>GPT-4</td><td>45.4</td><td>3.7</td><td>46.2</td><td>49.6</td><td>47.4</td><td>25.2</td><td>54.0</td><td>52.8</td><td>41.8</td><td>52.8</td><td>50.6</td></tr>
+            <tr><td>Baichuan3-turbo</td><td>45.2</td><td>4.8</td><td>45.8</td><td>49.6</td><td>47.3</td><td>32.3</td><td>52.5</td><td>54.0</td><td>35.4</td><td>54.6</td><td>50.9</td></tr>
+            <tr><td>o1-mini</td><td>39.5</td><td>20.5</td><td>39.9</td><td>49.7</td><td>44.1</td><td>21.3</td><td>49.2</td><td>55.9</td><td>33.8</td><td>48.8</td><td>46.8</td></tr>
+            <tr><td>Doubao-lite-4k</td><td>36.7</td><td>26.7</td><td>32.1</td><td>53.3</td><td>43.4</td><td>40.2</td><td>44.8</td><td>51.0</td><td>31.1</td><td>41.4</td><td>50.4</td></tr>
+            <tr><td>GPT-4o mini</td><td>37.6</td><td>0.9</td><td>61.5</td><td>37.9</td><td>37.8</td><td>19.0</td><td>42.4</td><td>46.4</td><td>31.0</td><td>42.2</td><td>39.8</td></tr>
+            <tr><td>GPT-3.5</td><td>29.7</td><td>3.0</td><td>67.4</td><td>30.6</td><td>30.1</td><td>13.3</td><td>35.8</td><td>35.2</td><td>25.6</td><td>32.7</td><td>31.7</td></tr>
+          </tbody>
+        
+        
+        <tr class="merged-row">
+            <td colspan="12">Open-Source Large Language Models</td>
+        </tr>
+          
+          <tbody>
+            <tr><td>Qwen2.5-72B</td><td>48.4</td><td>1.8</td><td>44.5</td><td>52.1</td><td>50.2</td><td>36.3</td><td>56.1</td><td>57.9</td><td>37.1</td><td>53.3</td><td>56.4</td></tr>
+            <tr><td>Qwen2.5-32B</td><td>38.8</td><td>5.6</td><td>50.1</td><td>43.6</td><td>41.1</td><td>33.7</td><td>45.8</td><td>48.7</td><td>27.3</td><td>44.7</td><td>44.9</td></tr>
+            <tr><td>Qwen2.5-14B</td><td>35.4</td><td>4.2</td><td>55.0</td><td>39.2</td><td>37.2</td><td>30.2</td><td>41.8</td><td>46.1</td><td>24.1</td><td>38.8</td><td>41.0</td></tr>
+            <tr><td>Qwen2.5-7B</td><td>26.6</td><td>4.6</td><td>63.5</td><td>29.5</td><td>27.9</td><td>20.1</td><td>32.7</td><td>33.8</td><td>18.0</td><td>28.6</td><td>32.0</td></tr>
+            <tr><td>Qwen2.5-3B</td><td>16.2</td><td>7.6</td><td>71.0</td><td>18.6</td><td>17.3</td><td>13.4</td><td>17.9</td><td>26.1</td><td>9.3</td><td>15.6</td><td>20.8</td></tr>
+            <tr><td>Qwen2.5-1.5B</td><td>11.1</td><td>9.3</td><td>74.3</td><td>13.1</td><td>12.0</td><td>11.0</td><td>11.3</td><td>18.7</td><td>6.7</td><td>12.2</td><td>12.9</td></tr>
+            <tr><td>GLM4-9B</td><td>25.9</td><td>8.3</td><td>61.6</td><td>29.6</td><td>27.6</td><td>28.8</td><td>32.1</td><td>32.0</td><td>17.6</td><td>28.9</td><td>27.8</td></tr>
+            <tr><td>ChatGLM3-6B</td><td>11.2</td><td>9.4</td><td>75.2</td><td>12.9</td><td>12.0</td><td>12.1</td><td>13.8</td><td>12.4</td><td>8.8</td><td>13.4</td><td>11.8</td></tr>
+            <tr><td>InternLM2.5-20B</td><td>31.5</td><td>7.7</td><td>60.8</td><td>34.1</td><td>32.8</td><td>32.0</td><td>37.1</td><td>37.7</td><td>21.2</td><td>35.7</td><td>34.3</td></tr>
+            <tr><td>InternLM2.5-7B</td><td>24.7</td><td>7.5</td><td>67.8</td><td>26.7</td><td>25.7</td><td>25.5</td><td>29.4</td><td>31.0</td><td>16.4</td><td>26.9</td><td>25.8</td></tr>
+            <tr><td>InternLM2.5-1.8B</td><td>5.3</td><td>31.1</td><td>63.6</td><td>7.7</td><td>6.3</td><td>6.1</td><td>8.7</td><td>7.2</td><td>3.3</td><td>4.5</td><td>7.4</td></tr>
+            <tr><td>Yi-1.5-34B</td><td>30.9</td><td>5.7</td><td>63.3</td><td>32.8</td><td>31.9</td><td>28.2</td><td>36.9</td><td>36.8</td><td>24.4</td><td>32.8</td><td>31.4</td></tr>
+            <tr><td>Yi-1.5-9B</td><td>18.2</td><td>2.9</td><td>78.9</td><td>18.7</td><td>18.4</td><td>17.2</td><td>20.2</td><td>24.3</td><td>10.2</td><td>20.1</td><td>19.8</td></tr>
+            <tr><td>Yi-1.5-6B</td><td>15.9</td><td>2.8</td><td>81.3</td><td>16.3</td><td>16.1</td><td>14.2</td><td>17.9</td><td>21.3</td><td>10.3</td><td>16.8</td><td>16.5</td></tr>
+            <tr><td>LLaMA3.1-70B</td><td>40.9</td><td>3.3</td><td>55.8</td><td>42.3</td><td>41.5</td><td>22.9</td><td>47.2</td><td>49.3</td><td>34.5</td><td>49.6</td><td>40.4</td></tr>
+            <tr><td>LLaMA3.1-8B</td><td>16.9</td><td>4.5</td><td>74.3</td><td>18.6</td><td>17.7</td><td>8.5</td><td>20.7</td><td>23.4</td><td>9.7</td><td>20.5</td><td>20.7</td></tr>
+            <tr><td>DeepSeek-67B</td><td>43.5</td><td>14.8</td><td>41.7</td><td>51.1</td><td>47.0</td><td>34.3</td><td>54.5</td><td>50.3</td><td>42.3</td><td>49.0</td><td>46.2</td></tr>
+            <tr><td>DeepSeek-V2-Lite-Chat</td><td>33.7</td><td>8.7</td><td>53.5</td><td>38.6</td><td>36.0</td><td>35.3</td><td>38.5</td><td>41.7</td><td>32.2</td><td>37.5</td><td>31.2</td></tr>
+            <tr><td>DeepSeek-7B</td><td>23.2</td><td>13.2</td><td>63.6</td><td>26.7</td><td>24.8</td><td>24.5</td><td>27.2</td><td>28.9</td><td>20.6</td><td>27.0</td><td>21.5</td></tr>
+            <tr><td>Baichuan2-13B</td><td>19.1</td><td>20.7</td><td>56.0</td><td>25.4</td><td>21.8</td><td>24.0</td><td>25.8</td><td>23.3</td><td>16.8</td><td>23.0</td><td>18.7</td></tr>
+            <tr><td>Baichuan2-7B</td><td>12.5</td><td>21.8</td><td>65.7</td><td>16.0</td><td>14.0</td><td>14.6</td><td>16.1</td><td>15.4</td><td>11.1</td><td>13.8</td><td>13.3</td></tr>
+            <tr><td>Mixtral-8x22B-Instruct-v0.1</td><td>27.3</td><td>2.2</td><td>70.5</td><td>27.9</td><td>27.6</td><td>10.6</td><td>32.3</td><td>36.0</td><td>21.0</td><td>34.1</td><td>26.9</td></tr>
+            <tr><td>Mixtral-8x7B-Instruct-v0.1</td><td>20.4</td><td>7.2</td><td>72.4</td><td>22.0</td><td>21.2</td><td>5.2</td><td>26.5</td><td>29.0</td><td>13.0</td><td>25.0</td><td>23.3</td></tr>
+            <tr><td>Mistral-7B-Instruct-v0.2</td><td>15.0</td><td>8.8</td><td>76.2</td><td>16.4</td><td>15.7</td><td>4.5</td><td>18.2</td><td>22.2</td><td>9.5</td><td>21.4</td><td>15.7</td></tr>
+          </tbody>
+        </table>
+
+        <div class="description2", style="margin-top: 30px;">
+          <p>
+            Results of different models on Chinese SimpleQA. For metrics, <strong>CO</strong>, <strong>NA</strong>, <strong>IN</strong>, and <strong>CGA</strong> denote "Correct", "Not attempted", "Incorrect", and "Correct given attempted", respectively. For subtopics, <strong>CC</strong>, <strong>HU</strong>, <strong>ETAS</strong>, <strong>LAC</strong>, <strong>SO</strong>, and <strong>NS</strong> represent "Chinese Culture", "Humanities", "Engineering, Technology, and Applied Sciences", "Life, Art, and Culture", "Society", and "Natural Science", respectively. Following SimpleQA, <strong>F-score</strong> is the harmonic mean between correct and correct given attempted.
+            </p>            
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Detailed Results On Subtopics.</h2>
+        <div class="image-container">
+            <img src="static/images/exp4.jpg" alt="An overview of the data construction, filtering, verification, and quality control processes of Chinese SimpleQA." style="max-width: 100%; height: auto;">
+        </div>
+        <div class="description2", style="margin-top: 30px;">
+          <p>As mentioned in our paper, the benchmark covers a total of 99 subtopics, which can comprehensively detect the knowledge level of the model in various fields. The upper figure illustrates the performance comparison between the o1 model and seven notable Chinese community models within several common domains. </p>
+            <p>Firstly, from an overall perspective, the o1-preview model exhibits the most comprehensive performance across these domains, with the Doubao model following closely. In contrast, the Moonshot model demonstrates the weakest overall performance.
+            Secondly, when examining specific domains, a significant disparity emerges between the Chinese community models and the o1 model in areas such as Computer Science and Medicine. However, this gap is minimal in domains like Education and Economics. Notably, in Education, some Chinese community models outperform the o1-preview, highlighting their potential for achieving success in specific vertical domains.
+            Lastly, when examining specific models, the Moonshot model is notably weaker in Mathematics, Law, and Entertainment, while the Baichuan model also underperforms in Entertainment. The Yi-Large model excels in Education, and the o1 model maintains the strongest performance across other domains. </p>
+            <p>Evaluating the performance of the models across diverse domains within the benchmark dataset enables users to identify the most suitable model for their specific needs.</p>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 
 
