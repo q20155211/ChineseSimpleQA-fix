@@ -37,6 +37,28 @@
   <script src="static/js/index.js"></script>
 </head>
 <body>
+
+  <style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+    }
+    th {
+        background-color: #f2f2f2; /* Light color for headers */
+    }
+    .merged-row {
+        background-color: #e0e0e0; /* Light color for merged row */
+    }
+    .link-block a {
+      margin: 0 5px; /* 调整为适合的值 */
+    }
+
+  </style>
   
   <section class="hero">
     <div class="hero-body">
@@ -78,44 +100,51 @@
                 <span>Boren Zheng,</span>
               </span>
               <span class="author-block">
+                <span>Xuepeng Liu,</span>
+              </span>
+              <span class="author-block">
+                <span>Dekai Sun,</span>
+              </span>
+              <span class="author-block">
                 <span>Wenbo Su,</span>
               </span>
               <span class="author-block">
                 <span>Bo Zheng</span>
               </span>
+               
 
                   </div>
 
                   <div class="is-size-5 publication-authors">
-                    <span class="author-block">Taobao & Tmall Group of Alibaba<br> </span>
+                    <span class="author-block" style="color: rgb(181, 44, 44);">Taobao & Tmall Group of Alibaba<br> </span>
                     <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
                     <span class="eql-cntrb"><small><br><sup>&dagger;</sup>Corresponding Author</small></span>
                     
                   </div>
 
+                  
+
                   <div class="column has-text-centered">
                     <div class="publication-links">
-                         <!-- Arxiv PDF link -->
+                      
+                       <!-- ArXiv abstract Link -->
+                  <span class="link-block">
+                  <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+
                       <span class="link-block">
-                        <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
+                        <a href="YOUR_HUGGING_FACE_DATASET_URL" target="_blank"
                         class="external-link button is-normal is-rounded is-dark">
                         <span class="icon">
-                          <i class="fas fa-file-pdf"></i>
+                          <img src="static/images/hf-logo.png" alt="Hugging Face Logo" style="width: 15px; height: 20px;"/>
                         </span>
-                        <span>Paper</span>
-                      </a>
-                    </span>
-
-                    <!-- Supplementary PDF link -->
-                    <span class="link-block">
-                      <a href="static/pdfs/supplementary_material.pdf" target="_blank"
-                      class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon">
-                        <i class="fas fa-file-pdf"></i>
+                          <span>Dataset</span>
+                        </a>
                       </span>
-                      <span>Supplementary</span>
-                    </a>
-                  </span>
 
                   <!-- Github link -->
                   <span class="link-block">
@@ -128,14 +157,7 @@
                   </a>
                 </span>
 
-                <!-- ArXiv abstract Link -->
-                <span class="link-block">
-                  <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
-                  class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                    <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
+               
                 </a>
               </span>
             </div>
@@ -165,9 +187,8 @@
 <!-- End paper abstract -->
 
 
-
 <!-- <div id="container" style="height: 100%"></div> -->
-<div id="container" style="width: 100%; height: 1200px;"></div>
+<div id="container" style="width: 100%; height: 1200px; margin-top: 50px;"></div>
 <script type="text/javascript" src="https://registry.npmmirror.com/echarts-nightly/5.6.0-dev.20241105/files/dist/echarts.min.js"></script>
 
 <script type="text/javascript">
@@ -1203,7 +1224,7 @@ option = {
 
   window.addEventListener('resize', myChart.resize);
 </script>
-          
+
 
 <style>
   .description2 p {
@@ -1222,33 +1243,55 @@ option = {
             <img src="static/images/data_construct.jpg" alt="An overview of the data construction, filtering, verification, and quality control processes of Chinese SimpleQA." style="max-width: 100%; height: auto;">
         </div>
         <div class="description2", style="margin-top: 30px;">
-          <p>The data construction process for Chinese SimpleQA includes both an automated process and a manual verification process. The automated part involves knowledge content extraction and filtering, automatic generation of question-answer pairs, LLM automatic validation based on criteria, answer factual correctness verification based on RAG (Retrieval-Augmented Generation), and question difficulty filtering.</p>
+          <!-- <p>The data construction process for Chinese SimpleQA includes both an automated process and a manual verification process. The automated part involves knowledge content extraction and filtering, automatic generation of question-answer pairs, LLM automatic validation based on criteria, answer factual correctness verification based on RAG (Retrieval-Augmented Generation), and question difficulty filtering.</p>
           <p>Initially, we collected a large amount of knowledge-rich text content from various knowledge fields, primarily derived from Wikipedia. This content was then processed through a quality assessment model to filter out low-quality data. Based on this, we guided the LLM to generate question-answer pairs according to predefined criteria using these high-quality knowledge contents. To ensure that the generated question-answer pairs met these criteria, we utilized the LLM again for rule-based validation to remove non-conforming data. In this way, we obtained a large set of initially filtered knowledge question-answer pairs. However, relying on a single data source for generation can potentially lead to inaccurate answers. To mitigate this risk, we deployed external retrieval tools to gather more diverse information, guiding the LLM in evaluating the factual correctness of answers based on information from different sources. In this process, incorrect question-answer pairs were discarded. Specifically, we used LlamaIndex as the retrieval method, with search results from Google and Bing as data sources, further enhancing the quality of the dataset.</p>
-          <p>In addition, we filtered the dataset for difficulty to better probe the knowledge boundaries of the LLMs, removing overly simple questions. Specifically, if a question could be correctly answered by all four powerful models, Meta-Llama-3-70B-Instruct, Qwen2.5-72B-Instruct, and GLM-4-Plus, it was deemed too simple and thus discarded. Through this approach, Chinese SimpleQA becomes more challenging.</p>
+          <p>In addition, we filtered the dataset for difficulty to better probe the knowledge boundaries of the LLMs, removing overly simple questions. Specifically, if a question could be correctly answered by all four powerful models, Meta-Llama-3-70B-Instruct, Qwen2.5-72B-Instruct, and GLM-4-Plus, it was deemed too simple and thus discarded. Through this approach, Chinese SimpleQA becomes more challenging.</p> -->
+          <p style="font-weight: bold;color: rgb(200, 26, 151);">Chinese SimpleQA's Features</p>
+          <ul style="margin-left: 20px; text-align: left; text-indent: 2em;">
+              <li style="margin-bottom: 1em;">
+                  <strong>Chinese</strong>: Our Chinese SimpleQA focuses on the Chinese language, which provides a comprehensive evaluation of the factuality abilities of existing LLMs in Chinese.
+              </li>
+              <li style="margin-bottom: 1em;">
+                  <strong>Diverse</strong>: Chinese SimpleQA covers 6 topics (i.e., "Chinese Culture", "Humanities", "Engineering, Technology, and Applied Sciences", "Life, Art, and Culture", "Society", and "Natural Science"), and these topics include 99 fine-grained subtopics in total, which demonstrates the diversity of our Chinese SimpleQA.
+              </li>
+              <li style="margin-bottom: 1em;">
+                  <strong>High-quality</strong>: We conduct a comprehensive and rigorous quality control process to ensure the quality and accuracy of our Chinese SimpleQA.
+              </li>
+              <li style="margin-bottom: 1em;">
+                  <strong>Static</strong>: Following SimpleQA, to preserve the evergreen property of Chinese SimpleQA, all reference answers would not change over time.
+              </li>
+              <li style="margin-bottom: 1em;">
+                  <strong>Easy-to-evaluate</strong>: Following SimpleQA, as the questions and answers are very short, the grading procedure is fast to run via existing LLMs (e.g., OpenAI API).
+              </li>
+          </ul>
+          <p style="font-weight: bold;color: rgb(200, 26, 151);">Key Observations</p>
+          <!-- <p style="margin-left: 20px; text-align: left; text-indent: 2em; color: rgb(200, 26, 151);font-weight: bold;">Key observations from our analysis:</p> -->
+          <ul style="margin-left: 20px; text-align: left; text-indent: 2em;">
+              <li style="margin-bottom: 1em;">
+                  <strong>Chinese SimpleQA is challenging</strong>. Only o1-preview and Doubao-pro-32k achieve the passing score (63.8% and 61.9% on the correct metric), and there is a long way to improve for many closed-source and open-source LLMs. 
+              </li>
+              <li style="margin-bottom: 1em;">
+                  <strong>Larger models lead to better results</strong>. Based on the results of Qwen2.5 series, InternLM series, Yi-1.5 series, etc, we observe that better performance is obtained when the model is larger.
+              </li>
+              <li style="margin-bottom: 1em;">
+                  <strong>Larger models are more calibrated</strong>. We observe that o1-preview is more calibrated than o1-mini, and GPT-4o is more calibrated than GPT-4o-mini.
+              </li>
+              <li style="margin-bottom: 1em;">
+                  <strong>RAG matters</strong>. When introducing the RAG strategy into existing LLMs, the performance gaps between different LLMs decrease a lot. For example, for GPT-4o and Qwen2.5-3B, the performance gap decreases from 42.4% to 9.3% when using RAG.
+              </li>
+              <li style="margin-bottom: 1em;">
+                  <strong>Alignment tax exists</strong>. Existing alignment or post-training strategies usually decrease the factuality of language models.
+              </li>
+              <li style="margin-bottom: 1em;">
+                  <strong>Rankings of SimpleQA and Chinese SimpleQA are different</strong>. The performance of several LLMs focusing on Chinese (Doubao-pro-32k, and GLM-4-Plus) is close to the high-performance o1-preview. In particular, in the “Chinese Culture” topic, these Chinese community LLMs are significantly better than GPT or o1 series models.
+              </li>
+          </ul>
+
         </div>
       </div>
     </div>
   </div>
 </section>
-
-<style>
-  table {
-      width: 100%;
-      border-collapse: collapse;
-  }
-  th, td {
-      border: 1px solid #ddd;
-      padding: 8px;
-      text-align: center;
-  }
-  th {
-      background-color: #f2f2f2; /* Light color for headers */
-  }
-  .merged-row {
-      background-color: #e0e0e0; /* Light color for merged row */
-  }
-</style>
-
 
 
 <section class="section hero is-light">
@@ -1337,23 +1380,16 @@ option = {
   </div>
 </section>
 
-
-
 <section class="section hero is-light">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Detailed Results On Subtopics.</h2>
+        <h2 class="title is-3">Rankings on Chinese SimpleQA vs. SimpleQA</h2>
         <div class="image-container">
-            <img src="static/images/exp4.jpg" alt="An overview of the data construction, filtering, verification, and quality control processes of Chinese SimpleQA." style="max-width: 100%; height: auto;">
+            <img src="static/images/exp6.jpg" alt="" style="max-width: 100%; height: auto;">
         </div>
         <div class="description2", style="margin-top: 30px;">
-          <p>As mentioned in our paper, the benchmark covers a total of 99 subtopics, which can comprehensively detect the knowledge level of the model in various fields. The upper figure illustrates the performance comparison between the o1 model and seven notable Chinese community models within several common domains. </p>
-            <p>Firstly, from an overall perspective, the o1-preview model exhibits the most comprehensive performance across these domains, with the Doubao model following closely. In contrast, the Moonshot model demonstrates the weakest overall performance.
-            Secondly, when examining specific domains, a significant disparity emerges between the Chinese community models and the o1 model in areas such as Computer Science and Medicine. However, this gap is minimal in domains like Education and Economics. Notably, in Education, some Chinese community models outperform the o1-preview, highlighting their potential for achieving success in specific vertical domains.
-            Lastly, when examining specific models, the Moonshot model is notably weaker in Mathematics, Law, and Entertainment, while the Baichuan model also underperforms in Entertainment. The Yi-Large model excels in Education, and the o1 model maintains the strongest performance across other domains. </p>
-            <p>Evaluating the performance of the models across diverse domains within the benchmark dataset enables users to identify the most suitable model for their specific needs.</p>
-          
+          <p>There are significant ranking differences of various models between the SimpleQA and Chinese SimpleQA benchmarks. For example, Doubao-pro-32k rises from 12th to 2nd in the Chinese version, while GPT-4 drops from 3rd to 9th. This highlights the importance of evaluating models in multilingual environments. Notably, o1-preview consistently holds the top position across both datasets. Many Chinese community-developed models perform better on the Chinese SimpleQA than on the SimpleQA.</p>
         </div>
       </div>
     </div>
@@ -1361,15 +1397,41 @@ option = {
 </section>
 
 
-
-<!--BibTex citation -->
-  <section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
-      <h2 class="title">BibTeX</h2>
-      <pre><code>BibTex Code Here</code></pre>
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Detailed Results on Subtopics</h2>
+        <div class="image-container">
+            <img src="static/images/exp4.jpg" alt="" style="max-width: 100%; height: auto;">
+        </div>
+        <div class="description2", style="margin-top: 30px;">
+          <p>The benchmark covers 99 subtopics to assess the model's knowledge across various fields. Overall, the o1-preview model performs most comprehensively, followed by Doubao, while Moonshot is the weakest. There is a noticeable gap between Chinese community models and the o1 model in Computer Science and Medicine, but less so in Education and Economics. Notably, some Chinese models outperform o1-preview in Education. Moonshot struggles in Mathematics, Law, and Entertainment, while Baichuan also underperforms in Entertainment. Yi-Large excels in Education, and o1 maintains strong performance in other domains. Evaluating models across diverse domains helps users choose the best fit for their needs.</p>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
-<!--End BibTex citation -->
+
+
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Calibration and Test-Time Compute</h2>
+        <div class="image-container">
+            <img src="static/images/calibration_and_inference.png" alt="" style="max-width: 100%; height: auto;">
+        </div>
+        <div class="description2", style="margin-top: 30px;">
+          <p style="font-weight: bold;color: rgb(200, 26, 151);">Calibration Analysis</p>
+          <p>We analyzed the calibration of different LLMs on Chinese SimpleQA. Models were instructed to provide a confidence level from 0 to 100 when answering questions. Ideally, confidence should match actual accuracy. Results show that GPT-4o aligns better than GPT-4o-mini, and o1-preview aligns better than o1-mini. In the Qwen2.5 series, larger models show better calibration. All models tend to be overconfident, especially when confidence is above 50.</p>
+          <p style="font-weight: bold;color: rgb(200, 26, 151);">Test-Time Compute Analysis</p>
+          <p>We evaluated the relationship between increased test-time compute and accuracy. Random samples from Chinese SimpleQA showed that as inference counts increase, response accuracy improves and eventually reaches a ceiling. This aligns with the dataset's purpose to probe model knowledge boundaries.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 
   <footer class="footer">
@@ -1379,8 +1441,7 @@ option = {
         <div class="content">
 
           <p>
-            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Chinese SimpleQA Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
-            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            This site is created based on <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> and is licensed under <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
             Commons Attribution-ShareAlike 4.0 International License</a>.
           </p>
 
