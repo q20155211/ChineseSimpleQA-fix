@@ -8,8 +8,9 @@
   <img src="image/title.png" width="800px"/>
 </p>
 <p align="center">
-   🌐 <a href="https://openstellarteam.github.io/ChineseSimpleQA/" target="_blank">Website</a> • 🤗 <a href="https://huggingface.co/datasets/OpenStellarTeam/Chinese-SimpleQA" target="_blank">Hugging Face</a> • ⏬ <a href="#data" target="_blank">Data</a> •   📃 <a href="https://huggingface.co/datasets/OpenStellarTeam/Chinese-SimpleQA" target="_blank">Paper</a> •   📊 <a href="https://openstellarteam.github.io/ChineseSimpleQA/" target="_blank">Leaderboard</a> 📖 <a href="https://openstellarteam.github.io/ChineseSimpleQA/" target="_blank">Tutorial (ZH)</a>  <br>  <a href="https://github.com/SJTU-LIT/ceval/blob/main/README_zh.md">   中文</a> | <a href="https://github.com/SJTU-LIT/ceval/blob/main/README.md">English 
+   🌐 <a href="https://openstellarteam.github.io/ChineseSimpleQA/" target="_blank">Website</a> • 🤗 <a href="https://huggingface.co/datasets/OpenStellarTeam/Chinese-SimpleQA" target="_blank">Hugging Face</a> • ⏬ <a href="#data" target="_blank">Data</a> •   📃 <a href="https://huggingface.co/datasets/OpenStellarTeam/Chinese-SimpleQA" target="_blank">Paper</a> •   📊 <a href="https://openstellarteam.github.io/ChineseSimpleQA/" target="_blank">Leaderboard</a>  <br>  <a href="https://github.com/OpenStellarTeam/ChineseSimpleQA/blob/master/README_zh.md">   中文</a> | <a href="https://github.com/OpenStellarTeam/ChineseSimpleQA/blob/master/README.md">English 
 </p> 
+
 
 [Homepage](https://openstellarteam.github.io/ChineseSimpleQA/)
 
