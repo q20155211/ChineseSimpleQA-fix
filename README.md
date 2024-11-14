@@ -1,45 +1,117 @@
 # Overview
+
+
+
+<div align="center">
+  <img src="image/title.png" width="800px"/>
+  <br />
+  <br />
+
+<p align="center">
+   🌐 <a href="https://openstellarteam.github.io/ChineseSimpleQA/" target="_blank">Website</a> • 🤗 <a href="https://huggingface.co/datasets/OpenStellarTeam/Chinese-SimpleQA" target="_blank">Hugging Face</a> • ⏬ <a href="#data" target="_blank">Data</a> •   📃 <a href="https://arxiv.org/abs/2411.07140" target="_blank">Paper</a> •   📊 <a href="https://openstellarteam.github.io/ChineseSimpleQA/" target="_blank">Leaderboard</a> 📖 <a href="https://openstellarteam.github.io/ChineseSimpleQA/" target="_blank">Tutorial (ZH)</a>  <br>  <a href="https://github.com/SJTU-LIT/ceval/blob/main/README_zh.md">   中文</a> | <a href="https://github.com/SJTU-LIT/ceval/blob/main/README.md">English 
+</p> 
+
 [Homepage](https://openstellarteam.github.io/ChineseSimpleQA/)
 
-This is the evaluation repository for Chinese SimpleQA, which is forked from OpenAI's [simple-evals](https://github.com/openai/simple-evals), and it follows the MIT License.
+**Chinese SimpleQA** is the first comprehensive Chinese benchmark to evaluate the factuality ability of language models to answer short questions, and Chinese SimpleQA mainly has five properties (i.e., Chinese, Diverse, High-quality, Static, Easy-to-evaluate). Specifically, our benchmark covers **6 major topics** with **99 diverse subtopics**. 
+
+ Please visit our [website](https://openstellarteam.github.io/ChineseSimpleQA/) or check our [paper](https://arxiv.org/abs/2411.07140) for more details. 
+
+> This is the evaluation repository for Chinese SimpleQA, which is forked from OpenAI's [simple-evals](https://github.com/openai/simple-evals), and it follows the MIT License.
+
+<div align="center">
+  <img src="image/category_en.png" width="500px"/>
+  <br />
+  <br />
+
+## 🆕 News
+
+* **[Soon]** We will release a comprehensive safety SimpleQA dataset after soon. **Stay tuned**
+
+* **[2024.11.12]** We have released the Chinese SimpleQA dataset 🤗[huggingface](https://huggingface.co/datasets/OpenStellarTeam/Chinese-SimpleQA) 🚀🚀🚀
+
+  
+
+## 💫 Instroduction
+
+* How to solve the generative hallucination of models has always been an unsolved problem in the field of artificial intelligence (AI). In order to measure the factual correctness of language models, OpenAI recently released and open-sourced a test set called SimpleQA. We have also been paying attention to the field of  factuality, which currently has problems such as outdated data, inaccurate evaluation, and incomplete coverage. For example, the knowledge evaluation sets widely used now are still CommonSenseQA, CMMLU, and C-Eval, which are multiple-choice question-based evaluation sets. **In order to further promote the research of the Chinese community on the factual correctness of models, we propose the Chinese SimpleQA**.  which consists of 3000 high-quality questions spanning 6 major topics, ranging from humanities to science and engineering. Specifically, the distinct main features of our proposed Chinese SimpleQA dataset are as follows:
+  * 🀄**Chinese:** Our Chinese SimpleQA focuses on the Chinese language, which provides a comprehensive evaluation of the factuality abilities of existing LLMs in Chinese.
+  * 🍀**Diverse:** Chinese SimpleQA covers 6 topics (i.e., “Chinese Culture”, “Humanities”, “Engineering, Technology, and Applied Sciences”, “Life, Art, and Culture”, “Society”, and “Natural Science”), and these topic includes 99 fine-grained subtopics in total, which demonstrates the diversity of our Chinese SimpleQA. 
+  * ⚡**High-quality:** We conduct a comprehensive and rigorous quality control process to ensure the quality and accuracy of our Chinese SimpleQA.
+  * 💡**Static:** Following SimpleQA, to preserve the evergreen property of Chinese SimpleQA, all reference answers would not change over time. 
+  * 🗂️**Easy-to-evaluate:** Following SimpleQA, as the questions and answers are very short, the grading procedure is fast to run via existing LLMs (e.g., OpenAI API).
+
+​	Based on Chinese SimpleQA, we have conducted a comprehensive evaluation of the factual capabilities of existing LLMs. We also maintain a comprehensive leaderboard list. 
+​	In short, we hope that Chinese SimpleQA can help developers gain a deeper understanding of the factual correctness of their models in the Chinese field, and at the same time provide an important cornerstone for their algorithm research, and jointly promote the growth of Chinese basic models.
 
 
-## Evals
 
-This repository currently contains the following evals:
+## 📊 Leaderboard
 
-- MMLU: Measuring Massive Multitask Language Understanding, reference: https://arxiv.org/abs/2009.03300, https://github.com/hendrycks/test, [MIT License](https://github.com/hendrycks/test/blob/master/LICENSE)
-- MATH: Measuring Mathematical Problem Solving With the MATH Dataset, reference: https://arxiv.org/abs/2103.03874, https://github.com/hendrycks/math, [MIT License](https://github.com/idavidrein/gpqa/blob/main/LICENSE)
-- GPQA: A Graduate-Level Google-Proof Q&A Benchmark, reference: https://arxiv.org/abs/2311.12022, https://github.com/idavidrein/gpqa/,  [MIT License](https://github.com/idavidrein/gpqa/blob/main/LICENSE)
-- DROP: A Reading Comprehension Benchmark Requiring Discrete Reasoning Over Paragraphs, reference: https://arxiv.org/abs/1903.00161, https://allenai.org/data/drop, [Apache License 2.0](https://github.com/allenai/allennlp-models/blob/main/LICENSE)
-- MGSM: Multilingual Grade School Math Benchmark (MGSM), Language Models are Multilingual Chain-of-Thought Reasoners, reference: https://arxiv.org/abs/2210.03057, https://github.com/google-research/url-nlp, [Creative Commons Attribution 4.0 International Public License (CC-BY)](https://github.com/google-research/url-nlp/blob/main/LICENSE)
-- HumanEval: Evaluating Large Language Models Trained on Code, reference https://arxiv.org/abs/2107.03374, https://github.com/openai/human-eval, [MIT License](https://github.com/openai/human-eval/blob/master/LICENSE)
+<div align="center">
+  <img src="image/leaderboard.png" width="800px"/>
+  <br />
+  <br />
 
-## Setup
+
+
+## 🛠️ Setup
 
 Due to the optional dependencies, we're not providing a unified setup mechanism. Instead, we're providing instructions for each eval and sampler.
 
 For [HumanEval](https://github.com/openai/human-eval/) (python programming)
+
 ```bash
 git clone https://github.com/openai/human-eval
 pip install -e human-eval
 ```
 
 For the [OpenAI API](https://pypi.org/project/openai/):
+
 ```bash
 pip install openai
 ```
 
 For the [Anthropic API](https://docs.anthropic.com/claude/docs/quickstart-guide):
+
 ```bash
 pip install anthropic
 ```
 
-## Demo
+
+
+## ⚖️ Evals
+
+We provide three evaluation methods. 
+
+(1) The first method is based on simple-evals evaluation. The startup command is as follows: 
+
 ```bash
 python -m simple-evals.demo
 ```
 This will launch evaluations through the OpenAI API.
 
-## Legal Stuff
-By contributing to evals, you are agreeing to make your evaluation logic and data under the same MIT license as this repository. You must have adequate rights to upload any data used in an eval. 
+(2) The second is a simple single evaluation script that we wrote from scratch.  The startup command is as follows: 
+
+```bash
+python chinese_simpleqa_easy.py
+```
+
+(3) We integrated our Chinese SimpleQA benchmark into our forked [OpenCompass](https://github.com/xxx/opencompass). You can refer to the opencompass configuration script for evaluation
+
+## Citation
+
+Please cite our paper if you use our dataset.
+
+```
+@misc{he2024chinesesimpleqachinesefactuality,
+      title={Chinese SimpleQA: A Chinese Factuality Evaluation for Large Language Models}, 
+      author={Yancheng He and Shilong Li and Jiaheng Liu and Yingshui Tan and Weixun Wang and Hui Huang and Xingyuan Bu and Hangyu Guo and Chengwei Hu and Boren Zheng and Zhuoran Lin and Xuepeng Liu and Dekai Sun and Shirong Lin and Zhicheng Zheng and Xiaoyong Zhu and Wenbo Su and Bo Zheng},
+      year={2024},
+      eprint={2411.07140},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2411.07140}, 
+}
+```
+
