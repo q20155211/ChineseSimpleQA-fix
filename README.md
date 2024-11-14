@@ -1,14 +1,14 @@
+
+
 # Overview
 
 
 
-<div align="center">
-  <img src="image/title.png" width="800px"/>
-  <br />
-  <br />
-
 <p align="center">
-   🌐 <a href="https://openstellarteam.github.io/ChineseSimpleQA/" target="_blank">Website</a> • 🤗 <a href="https://huggingface.co/datasets/OpenStellarTeam/Chinese-SimpleQA" target="_blank">Hugging Face</a> • ⏬ <a href="#data" target="_blank">Data</a> •   📃 <a href="https://arxiv.org/abs/2411.07140" target="_blank">Paper</a> •   📊 <a href="https://openstellarteam.github.io/ChineseSimpleQA/" target="_blank">Leaderboard</a> 📖 <a href="https://openstellarteam.github.io/ChineseSimpleQA/" target="_blank">Tutorial (ZH)</a>  <br>  <a href="https://github.com/SJTU-LIT/ceval/blob/main/README_zh.md">   中文</a> | <a href="https://github.com/SJTU-LIT/ceval/blob/main/README.md">English 
+  <img src="image/title.png" width="800px"/>
+</p>
+<p align="center">
+   🌐 <a href="https://openstellarteam.github.io/ChineseSimpleQA/" target="_blank">Website</a> • 🤗 <a href="https://huggingface.co/datasets/OpenStellarTeam/Chinese-SimpleQA" target="_blank">Hugging Face</a> • ⏬ <a href="#data" target="_blank">Data</a> •   📃 <a href="https://huggingface.co/datasets/OpenStellarTeam/Chinese-SimpleQA" target="_blank">Paper</a> •   📊 <a href="https://openstellarteam.github.io/ChineseSimpleQA/" target="_blank">Leaderboard</a> 📖 <a href="https://openstellarteam.github.io/ChineseSimpleQA/" target="_blank">Tutorial (ZH)</a>  <br>  <a href="https://github.com/SJTU-LIT/ceval/blob/main/README_zh.md">   中文</a> | <a href="https://github.com/SJTU-LIT/ceval/blob/main/README.md">English 
 </p> 
 
 [Homepage](https://openstellarteam.github.io/ChineseSimpleQA/)
@@ -19,15 +19,18 @@
 
 > This is the evaluation repository for Chinese SimpleQA, which is forked from OpenAI's [simple-evals](https://github.com/openai/simple-evals), and it follows the MIT License.
 
-<div align="center">
-  <img src="image/category_en.png" width="500px"/>
-  <br />
-  <br />
+<p align="center">
+  <img src="image/category_en.png" width="700px"/>
+</p>
+
 
 ## 🆕 News
 
 - **\[2024.11.18 soon]** We will release a comprehensive safety SimpleQA dataset after soon. **Stay tuned** 🔥🔥🔥
+
 - **\[2024.11.12\]** We have released the Chinese SimpleQA dataset 🤗[huggingface](https://huggingface.co/datasets/OpenStellarTeam/Chinese-SimpleQA) 🚀🚀🚀
+
+  
 
 ## 💫 Instroduction
 
@@ -43,12 +46,13 @@
 
 
 
+
+
 ## 📊 Leaderboard
 
-<div align="center">
+<p align="center">
   <img src="image/leaderboard.png" width="800px"/>
-  <br />
-  <br />
+</p>
 
 
 
@@ -77,6 +81,8 @@ pip install anthropic
 
 
 
+
+
 ## ⚖️ Evals
 
 We provide three evaluation methods. 
@@ -88,11 +94,29 @@ python -m simple-evals.demo
 ```
 This will launch evaluations through the OpenAI API.
 
+
+
 (2) The second is a simple single evaluation script that we wrote from scratch.  The startup command is as follows: 
 
-```bash
-python chinese_simpleqa_easy.py
-```
+- Step1: set your openai key in scripts/chinese_simpleqa_easy.py:
+
+  ```
+  os.environ["OPENAI_API_KEY"] = "replace your key here"
+  ```
+
+- Step2: run the eval script:
+
+  ```
+  python scripts/chinese_simpleqa_easy.py
+  ```
+
+- Step3: we also provide a unified processing script for multiple model results. After running it, you can get a complete leaderboard:
+
+  ```
+  python scripts/get_leaderboard.py
+  ```
+
+  
 
 (3) We integrated our Chinese SimpleQA benchmark into our forked [OpenCompass](https://github.com/xxx/opencompass). You can refer to the opencompass configuration script for evaluation
 
