@@ -26,11 +26,8 @@
 
 ## 🆕 News
 
-* **[Soon]** We will release a comprehensive safety SimpleQA dataset after soon. **Stay tuned**
-
-* **[2024.11.12]** We have released the Chinese SimpleQA dataset 🤗[huggingface](https://huggingface.co/datasets/OpenStellarTeam/Chinese-SimpleQA) 🚀🚀🚀
-
-  
+- **\[2024.11.18 soon]** We will release a comprehensive safety SimpleQA dataset after soon. **Stay tuned** 🔥🔥🔥
+- **\[2024.11.12\]** We have released the Chinese SimpleQA dataset 🤗[huggingface](https://huggingface.co/datasets/OpenStellarTeam/Chinese-SimpleQA) 🚀🚀🚀
 
 ## 💫 Instroduction
 
