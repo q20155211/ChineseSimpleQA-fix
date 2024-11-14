@@ -7,6 +7,7 @@
 <p align="center">
   <img src="image/title.png" width="800px"/>
 </p>
+
 <p align="center">
    🌐 <a href="https://openstellarteam.github.io/ChineseSimpleQA/" target="_blank">Website</a> • 🤗 <a href="https://huggingface.co/datasets/OpenStellarTeam/Chinese-SimpleQA" target="_blank">Hugging Face</a> • ⏬ <a href="#data" target="_blank">Data</a> •   📃 <a href="https://huggingface.co/datasets/OpenStellarTeam/Chinese-SimpleQA" target="_blank">Paper</a> •   📊 <a href="https://openstellarteam.github.io/ChineseSimpleQA/" target="_blank">Leaderboard</a>  <br>  <a href="https://github.com/OpenStellarTeam/ChineseSimpleQA/blob/master/README_zh.md">   中文</a> | <a href="https://github.com/OpenStellarTeam/ChineseSimpleQA/blob/master/README.md">English 
 </p> 
@@ -23,7 +24,10 @@
 <p align="center">
   <img src="image/category_en.png" width="700px"/>
 </p>
+<<<<<<< HEAD
 
+=======
+>>>>>>> f8d9e034d40763144aebb25c28c1935e2eed9241
 
 ## 🆕 News
 
