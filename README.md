@@ -2,10 +2,9 @@
 
 
 
-<div align="center">
+<p align="center">
   <img src="image/title.png" width="800px"/>
-  <br />
-  <br />
+</p>
 
 <p align="center">
    🌐 <a href="https://openstellarteam.github.io/ChineseSimpleQA/" target="_blank">Website</a> • 🤗 <a href="https://huggingface.co/datasets/OpenStellarTeam/Chinese-SimpleQA" target="_blank">Hugging Face</a> • ⏬ <a href="#data" target="_blank">Data</a> •   📃 <a href="https://arxiv.org/abs/2411.07140" target="_blank">Paper</a> •   📊 <a href="https://openstellarteam.github.io/ChineseSimpleQA/" target="_blank">Leaderboard</a> 📖 <a href="https://openstellarteam.github.io/ChineseSimpleQA/" target="_blank">Tutorial (ZH)</a>  <br>  <a href="https://github.com/SJTU-LIT/ceval/blob/main/README_zh.md">   中文</a> | <a href="https://github.com/SJTU-LIT/ceval/blob/main/README.md">English 
@@ -19,10 +18,9 @@
 
 > This is the evaluation repository for Chinese SimpleQA, which is forked from OpenAI's [simple-evals](https://github.com/openai/simple-evals), and it follows the MIT License.
 
-<div align="center">
-  <img src="image/category_en.png" width="500px"/>
-  <br />
-  <br />
+<p align="center">
+  <img src="image/category_en.png" width="700px"/>
+</p>
 
 ## 🆕 News
 
@@ -45,10 +43,9 @@
 
 ## 📊 Leaderboard
 
-<div align="center">
+<p align="center">
   <img src="image/leaderboard.png" width="800px"/>
-  <br />
-  <br />
+</p>
 
 
 
