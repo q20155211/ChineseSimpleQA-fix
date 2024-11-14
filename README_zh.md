@@ -99,13 +99,13 @@ python -m simple-evals.demo
   os.environ["OPENAI_API_KEY"] = "replace your key here"
   ```
 
-- 第二布：运行下面的脚本启动评测：
+- 第二步：运行下面的脚本启动评测：
 
   ```
   python scripts/chinese_simpleqa_easy.py
   ```
 
-- 第三布：我们同样提供了同时处理多个模型结果的脚本，可以直接得到最终的leaderboard:
+- 第三步：我们同样提供了同时处理多个模型结果的脚本，可以直接得到最终的leaderboard:
 
   ```
   python scripts/get_leaderboard.py
