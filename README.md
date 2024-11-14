@@ -24,10 +24,6 @@
 <p align="center">
   <img src="image/category_en.png" width="700px"/>
 </p>
-<<<<<<< HEAD
-
-=======
->>>>>>> f8d9e034d40763144aebb25c28c1935e2eed9241
 
 ## 🆕 News
 
