@@ -13,8 +13,6 @@
 </p> 
 
 
-[Homepage](https://openstellarteam.github.io/ChineseSimpleQA/)
-
 **Chinese SimpleQA** is the first comprehensive Chinese benchmark to evaluate the factuality ability of language models to answer short questions, and Chinese SimpleQA mainly has five properties (i.e., Chinese, Diverse, High-quality, Static, Easy-to-evaluate). Specifically, our benchmark covers **6 major topics** with **99 diverse subtopics**. 
 
  Please visit our [website](https://openstellarteam.github.io/ChineseSimpleQA/) or check our [paper](https://arxiv.org/abs/2411.07140) for more details. 
@@ -42,8 +40,8 @@
   * 💡**Static:** Following SimpleQA, to preserve the evergreen property of Chinese SimpleQA, all reference answers would not change over time. 
   * 🗂️**Easy-to-evaluate:** Following SimpleQA, as the questions and answers are very short, the grading procedure is fast to run via existing LLMs (e.g., OpenAI API).
 
-​	Based on Chinese SimpleQA, we have conducted a comprehensive evaluation of the factual capabilities of existing LLMs. We also maintain a comprehensive leaderboard list. 
-​	In short, we hope that Chinese SimpleQA can help developers gain a deeper understanding of the factual correctness of their models in the Chinese field, and at the same time provide an important cornerstone for their algorithm research, and jointly promote the growth of Chinese basic models.
+- Based on Chinese SimpleQA, we have conducted a comprehensive evaluation of the factual capabilities of existing LLMs. We also maintain a comprehensive leaderboard list. 
+- In short, we hope that Chinese SimpleQA can help developers gain a deeper understanding of the factual correctness of their models in the Chinese field, and at the same time provide an important cornerstone for their algorithm research, and jointly promote the growth of Chinese basic models.
 
 
 
@@ -52,8 +50,9 @@
 ## 📊 Leaderboard
 
 <p align="center">
-  <img src="image/leaderboard.png" width="800px"/>
+  <img src="image/leaderboard1.png" width="800px"/>
 </p>
+
 
 
 

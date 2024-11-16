@@ -12,8 +12,6 @@
 </p> 
 
 
-[Homepage](https://openstellarteam.github.io/ChineseSimpleQA/)
-
 **Chinese SimpleQA**是首个简短事实问答能力的中文评测集，用于评估语言模型回答简短问题的真实性，主要有五个特点（即中文、多样化、高质量、静态、易于评估）。我们的基准涵盖**6 个主要主题**和**99 个多样化子主题**。
 
  可以访问我们的 [网站](https://openstellarteam.github.io/ChineseSimpleQA/) 或是 [论文](https://arxiv.org/abs/2411.07140) 得到更详细的信息。
@@ -41,17 +39,17 @@
   * 🗂️易于评估：评测数据的问题和答案非常简短，评测可以基于任意的模型，能够以较低成本和较快速度进行高一致性的评测。
   * 🐵**有难度和区分度**：我们评估了40+国内外开源和闭源大模型。目前在评测集上o1-preview都仅刚过及格线(正确率63.8)， 其他大部分模型都处于低分状态，其中GPT-4o mini仅37.6分，ChatGLM3-6B和Qwen2.5-1.5B仅11.2和11.1的准确率。
 
-基于中文SimpleQA，我们对现有LLM的事实性能力进行了全面的评估。并维护一个全面的leaderboard榜单。同时我们也在评测集上实验分析了推理scaling law、模型校准、RAG、对齐税等研究问题，均有较明显的实验表现，后续本评测集都可以作为这些方向的重要参考之一。
-
-总之，我们希望Chinese SimpleQA能帮助开发者深入了解其模型在中文领域的事实正确性，同时也能为他们的算法研究提供重要基石，共同促进中文基础模型的成长。
+- 基于中文SimpleQA，我们对现有LLM的事实性能力进行了全面的评估。并维护一个全面的leaderboard榜单。同时我们也在评测集上实验分析了推理scaling law、模型校准、RAG、对齐税等研究问题，均有较明显的实验表现，后续本评测集都可以作为这些方向的重要参考之一。
+- 总之，我们希望Chinese SimpleQA能帮助开发者深入了解其模型在中文领域的事实正确性，同时也能为他们的算法研究提供重要基石，共同促进中文基础模型的成长。
 
 
 
 ## 📊 Leaderboard
 
 <p align="center">
-  <img src="image/leaderboard.png" width="800px"/>
+  <img src="image/leaderboard1.png" width="800px"/>
 </p>
+
 
 
 
