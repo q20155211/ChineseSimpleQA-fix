@@ -8,8 +8,9 @@
   <img src="image/title.png" width="800px"/>
 </p>
 <p align="center">
-   🌐 <a href="https://openstellarteam.github.io/ChineseSimpleQA/" target="_blank">网站</a> • 🤗 <a href="https://huggingface.co/datasets/OpenStellarTeam/Chinese-SimpleQA" target="_blank">Hugging Face</a> • ⏬ <a href="#data" target="_blank">数据</a> •   📃 <a href="https://huggingface.co/datasets/OpenStellarTeam/Chinese-SimpleQA" target="_blank">Paper</a> •   📊 <a href="https://openstellarteam.github.io/ChineseSimpleQA/" target="_blank">排行榜</a>  <br>  <a href="https://github.com/OpenStellarTeam/ChineseSimpleQA/blob/master/README_zh.md">   中文</a> | <a href="https://github.com/OpenStellarTeam/ChineseSimpleQA/blob/master/README.md">English 
+   🌐 <a href="https://openstellarteam.github.io/ChineseSimpleQA/" target="_blank">网站</a> • 🤗 <a href="https://huggingface.co/datasets/OpenStellarTeam/Chinese-SimpleQA" target="_blank">Hugging Face</a> • ⏬ <a href="#data" target="_blank">数据</a> •   📃 <a href="https://huggingface.co/datasets/OpenStellarTeam/Chinese-SimpleQA" target="_blank">Paper</a> •   📊 <a href="http://47.109.32.164/" target="_blank">排行榜</a>  <br>  <a href="https://github.com/OpenStellarTeam/ChineseSimpleQA/blob/master/README_zh.md">   中文</a> | <a href="https://github.com/OpenStellarTeam/ChineseSimpleQA/blob/master/README.md">English 
 </p> 
+
 
 
 **Chinese SimpleQA**是首个简短事实问答能力的中文评测集，用于评估语言模型回答简短问题的真实性，主要有五个特点（即中文、多样化、高质量、静态、易于评估）。我们的基准涵盖**6 个主要主题**和**99 个多样化子主题**。
@@ -49,7 +50,7 @@
 <p align="center">
   <img src="image/leaderboard1.png" width="800px"/>
 </p>
-
+详见：  [📊](http://47.109.32.164/)
 
 
 
