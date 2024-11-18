@@ -110,9 +110,23 @@ python -m simple-evals.demo
   python scripts/get_leaderboard.py
   ```
 
-  
-
-(3) 我们同样将我们的评测集介入了 [OpenCompass](https://github.com/xxx/opencompass)框架。你可以参照opencompass的脚本进行评测
+(3) 我们同样将我们的评测集接入了 [OpenCompass](https://github.com/open-compass/opencompass)框架。你可以参照opencompass的脚本进行评测
+- 第一步: 下载Opencompass:
+  ```shell
+  cd ~
+  git clone git@github.com:open-compass/opencompass.git
+  cd opencompass
+  ```
+- 第二步: 从huggingface下载Chinese Simpleqa，然后将chinese_simpleqa.jsonl放在OPENCOMPASS_PATH/data/chinese_simpleqa路径下
+    ```
+    ~/opencompass/data/
+    └── chinese_simpleqa
+        ├── chinese_simpleqa.jsonl
+    ```
+- 第三步: 参照configs/eval_chinese_simpleqa.py配置文件设置要评估的模型, 然后运行脚本
+  ```
+  python run.py configs/eval_chinese_simpleqa.py
+  ```
 
 ## Citation
 

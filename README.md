@@ -120,7 +120,27 @@ This will launch evaluations through the OpenAI API.
 
   
 
-(3) We integrated our Chinese SimpleQA benchmark into our forked [OpenCompass](https://github.com/xxx/opencompass). You can refer to the opencompass configuration script for evaluation
+(3) We also integrated our Chinese SimpleQA benchmark into our forked [OpenCompass](https://github.com/open-compass/opencompass). You can refer to the opencompass configuration script for evaluation
+- Step1: git clone Opencompass:
+  ```shell
+  cd ~
+  git clone git@github.com:open-compass/opencompass.git
+  cd opencompass
+  ```
+- Step2: download Chinese Simpleqa data from [huggingface](https://huggingface.co/datasets/OpenStellarTeam/Chinese-SimpleQA),  and put it in the following path(OPENCOMPASS_PATH/data/chinese_simpleqa), make sure you get path like this:
+    ```
+    ~/opencompass/data/
+    └── chinese_simpleqa
+        ├── chinese_simpleqa.jsonl
+    ```
+
+
+- Step3: configuration your launch in configs/eval_chinese_simpleqa.py, set your models to be evaluated, set your judge model (we recommend to use gpt4o) and launch it!
+  ```
+  python run.py configs/eval_chinese_simpleqa.py
+  ```
+
+
 
 ## Citation
 
