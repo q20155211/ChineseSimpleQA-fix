@@ -1,18 +1,17 @@
 import requests
 import json
 import traceback
-import json
-import traceback
 import re
 import sys
 from time import sleep
 from tqdm.asyncio import tqdm
 from multiprocessing import Pool
-import numpy as np  
-from openai import OpenAI
+import numpy as np
+import openai
 import pandas as pd
 import os
 os.environ["OPENAI_API_KEY"] = "replace your key here"
+os.environ["OPENAI_BASE_URL"] = "replace your key here"
 
 judge_prompt = """
 请根据给定问题、标准答案和模型预测的答案来评估模型的回答是否正确。您的任务是将结果评定为：【正确】、【错误】或【未尝试】。
@@ -176,7 +175,7 @@ def call_model(messages, modelname):
         try:
             client = OpenAI(
                 api_key=os.environ["OPENAI_API_KEY"],
-                base_url="xxx",
+                base_url=os.environ["OPENAI_BASE_URL"],
             )
             completion = client.chat.completions.create(
                 model=modelname,
@@ -198,11 +197,7 @@ def write_to_file(info):
 
 
 def judge_answer(question, ref_answer, answer):
-    # prompt = f"问题：{question}\n标准答案：{ref_answer}\n模型回答：{answer}\n评判结果："
-    if lang == "en":
-        prompt = judge_prompt_en.format(question = question, target = ref_answer, predicted_answer = answer)
-    else:
-        prompt = judge_prompt.format(question = question, target = ref_answer, predicted_answer = answer)
+    prompt = judge_prompt.format(question = question, target = ref_answer, predicted_answer = answer)
     messages = [{"role": "system", "content": "你是一个智能助手，请根据给定问题、标准答案和模型预测的答案来评估模型的回答是否正确。"}]
     messages.append({"role": "user", "content": prompt})
     output,_ = call_model(messages, "gpt-4o-0806")
@@ -221,35 +216,10 @@ def process_line(line):
         write_to_file(line)
         return 1
     
-    if rag == 1:
-        question = line.get("question", "")
-        if question == "":
-            return 0
-        references = "无"
-        if "references" in line and line['references'] != []:
-            references = "\n".join(line['references'][:10])
-        ref_answer = line['answer']
-        prompt = f"检索材料：{references}\n用户问题：{question}"
-        system_prompt = "请结合检索材料准确地回答用户的问题，如果检索材料有相关知识，优先参考检索材料，若无则依靠自身知识作答。"
-        messages = [{"role": "system", "content": system_prompt}]
-        messages.append({"role": "user", "content": prompt})
-    else:
-        if system == 1:
-            system_prompt = "请准确地回答用户的问题，给定的问题的标准答案通常都是一个实体，所以请简短回答, 必须少于10个字。注意如果对于该问题你不知道答案或是不确定，可以直接回复”对不起，我不知道“"
-        else:
-            if cot == 1:
-                system_prompt = "你是一个智能助手，现在需要你准确地回答用户的问题。在回答问题前请先回忆并输出你知道的相关信息，然后再给出答案。"
-            elif cot == 2:
-                system_prompt = "你是一个智能助手，现在需要你准确地回答用户的问题。在回答问题前请先逐步分析并解释你对每个问题的推理，然后再给出答案。"
-            else:
-                if lang == "en":
-                    system_prompt = "You are a helpful assistant."
-                else:
-                    system_prompt = "你是一个智能助手。"
-        question = line['question']
-        ref_answer = line['answer']
-        messages = [{"role": "system", "content": system_prompt}]
-        messages.append({"role": "user", "content": question})
+    question = line['question']
+    ref_answer = line['answer']
+    messages = [{"role": "system", "content": "你是一个智能助手。"}]
+    messages.append({"role": "user", "content": question})
     try:
         output = line.get("model_output", "")
         if output == "":
@@ -257,7 +227,6 @@ def process_line(line):
         print("output: ", output)    
         line['model_output'] = output
         if output == "":
-            print("************")
             line['info'] = "模型输出为空"
             write_to_file(line)
             return 0
@@ -296,35 +265,17 @@ def calculate_accuracies(group):
 
 
 # ==============================
-if len(sys.argv) != 8:
-    print("Usage: python simpleqa_judge_new.py <call_modelname> <origin> <rag> <cot> <system>")
-    sys.exit(1)
+print("Usage: python judge/chinese_simpleqa_easy.py <call_modelname>")
 
 call_modelname = sys.argv[1]
-origin = sys.argv[2]
-rag = int(sys.argv[3]) 
-cot = int(sys.argv[4])  
-system = int(sys.argv[5])
-number = int(sys.argv[6])
-lang = sys.argv[7]
 
-print(f"number: {number}")
 print(f"Model Name: {call_modelname}")
-print(f"Origin: {origin}")
-print(f"RAG: {rag}")
-print(f"COT: {cot}")
-print(f"System: {system}")
-print(f"Lang: {lang}")
 
-if rag == 1:
-    origin_file = "chinese_simpleqa_ref.jsonl"
-else:
-    if lang == "en":
-        origin_file = "simpleqa.jsonl"
-    else:
-        origin_file = "chinese_simpleqa.jsonl"
-    
-new_file = f"evaluation/models_results/simpleqa_{number}_{lang}_{call_modelname}_rag{rag}_cot{cot}_system{system}.jsonl"
+origin_file = "data/chinese_simpleqa.jsonl"
+folder = "evaluation/models_results"
+if not os.path.exists(folder):
+    os.makedirs(folder)
+new_file = f"{folder}/simpleqa_{call_modelname}.jsonl"
 
 # ==============================
       
@@ -358,7 +309,8 @@ if __name__ == "__main__":
         correct = np.sum(np.array(results))
         print("成功数： ", correct)   
     k = 0 
-    while correct < 3000 and k < 3:
+    
+    while correct < int(len(data_new)*0.95) and k < 3:
         k += 1
         print("失败数量过多，重试")
         start_time = time.perf_counter()    

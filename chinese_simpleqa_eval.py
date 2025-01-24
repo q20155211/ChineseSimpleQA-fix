@@ -3,7 +3,7 @@ import re
 import blobfile as bf
 import pandas
 from . import common
-from .types import Eval, EvalResult, SamplerBase, SingleEvalResult
+from .types_local import Eval, EvalResult, SamplerBase, SingleEvalResult
 
 GRADER_TEMPLATE = """
 请根据给定问题、标准答案和模型预测的答案来评估模型的回答是否正确。您的任务是将结果评定为：【正确】、【错误】或【未尝试】。

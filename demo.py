@@ -3,12 +3,6 @@ import time
 
 import pandas as pd  
 from . import common
-from .drop_eval import DropEval
-from .gpqa_eval import GPQAEval
-from .humaneval_eval import HumanEval
-from .math_eval import MathEval
-from .mgsm_eval import MGSMEval
-from .mmlu_eval import MMLUEval
 from .simpleqa_eval import SimpleQAEval
 from .chinese_simpleqa_eval import ChineseSimpleQAEval
 from .sampler.chat_completion_sampler import (
@@ -53,20 +47,6 @@ def main():
     def get_evals(eval_name):
         # Set num_examples = None to reproduce full evals
         match eval_name:
-            case "mmlu":
-                return MMLUEval(num_examples=1 if debug else 2500)
-            case "math":
-                return MathEval(
-                    equality_checker=equality_checker, num_examples=5 if debug else 2500
-                )
-            case "gpqa":
-                return GPQAEval(n_repeats=10 if debug else 1, num_examples=5 if debug else None)
-            case "mgsm":
-                return MGSMEval(num_examples_per_lang=10 if debug else 250)
-            case "drop":
-                return DropEval(num_examples=10 if debug else 2000, train_samples_per_prompt=3)
-            case "humaneval":
-                return HumanEval(num_examples=10 if debug else None)
             case "simpleqa":
                 return SimpleQAEval(
                     grader_model = grading_sampler, 

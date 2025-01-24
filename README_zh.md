@@ -96,18 +96,19 @@ python -m simple-evals.demo
 
   ```
   os.environ["OPENAI_API_KEY"] = "replace your key here"
+  os.environ["OPENAI_BASE_URL"] = "replace your key here"
   ```
 
 - 第二步：运行下面的脚本启动评测：
 
   ```
-  python scripts/chinese_simpleqa_easy.py
+  python judge/chinese_simpleqa_easy.py <model_name>
   ```
 
 - 第三步：我们同样提供了同时处理多个模型结果的脚本，可以直接得到最终的leaderboard:
 
   ```
-  python scripts/get_leaderboard.py
+  python judge/get_leaderboard.py
   ```
 
 (3) 我们同样将我们的评测集接入了 [OpenCompass](https://github.com/open-compass/opencompass)框架。你可以参照opencompass的脚本进行评测

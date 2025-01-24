@@ -104,18 +104,19 @@ This will launch evaluations through the OpenAI API.
 
   ```
   os.environ["OPENAI_API_KEY"] = "replace your key here"
+  os.environ["OPENAI_BASE_URL"] = "replace your key here"
   ```
 
 - Step2: run the eval script:
 
   ```
-  python scripts/chinese_simpleqa_easy.py
+  python judge/chinese_simpleqa_easy.py <model_name>
   ```
 
 - Step3: we also provide a unified processing script for multiple model results. After running it, you can get a complete leaderboard:
 
   ```
-  python scripts/get_leaderboard.py
+  python judge/get_leaderboard.py
   ```
 
   
